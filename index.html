@@ -15,25 +15,22 @@
         /* 背景图片 */
         .background {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d088b2cbb1cc5181.jpg'); /* 替换为大背景图路径 */
-            background-size: cover;
-            background-position: center;
-            width: 960px; /* 替换为标题图片的实际宽度 */
-            height: 540px; /* 替换为标题图片的实际高度 */
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-size: cover; /* 让背景图按比例缩放以覆盖整个页面 */
+            background-position: center; /* 居中对齐背景图 */
+            background-repeat: no-repeat; /* 禁止重复背景图 */
+            height: 100%;
+            display: flex; /* 使用 Flexbox 布局 */
+            flex-direction: column; /* 垂直方向布局 */
+            justify-content: center; /* 内容垂直居中 */
+            align-items: center; /* 内容水平居中 */
         }
 
         /* 标题样式 (用图片替代文本) */
         .title {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
-            background-size: contain;
+            background-size: contain; /* 保持比例缩放 */
             background-repeat: no-repeat;
-            width: 626px; /* 替换为标题图片的实际宽度 */
-            height: 117px; /* 替换为标题图片的实际高度 */
-            margin-bottom: 20px;
+            width: 68%; /* 宽度为页面的 68%，可根据需要调整 */
         }
 
         /* 按钮样式 (用图片替代按钮) */
@@ -41,8 +38,10 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/73e5a7351a619f2b.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
-            width: 339px; /* 替换为按钮图片的实际宽度 */
-            height: 58px; /* 替换为按钮图片的实际高度 */
+            width: 35%; /* 按钮宽度为页面宽度的 20% */
+            border: none;
+            cursor: pointer;
+            margin-top: 500px; /* 与标题的间距 */
         }
 
         /* 按钮悬停效果 */
@@ -53,16 +52,15 @@
         /* 岛屿的样式 (可以根据切图调整位置和大小) */
         .island {
             position: absolute;
-            width: 600px; /* 替换为岛屿图片的实际宽度 */
-            height: 400px; /* 替换为岛屿图片的实际高度 */
-            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为岛屿图片路径 */
-            background-size: cover;
-            background-position: center;
+            background-image: url('island-image.png'); /* 替换为岛屿图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 60%; /* 根据屏幕宽度调整岛屿大小 */
         }
 
         /* 示例岛屿位置 */
         .island-1 {
-            top: 60%;
+            top: 8%;
             left: 50%;
         }
 
