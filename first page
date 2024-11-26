@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 整体页面布局 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 背景图片 */
+        .background {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d088b2cbb1cc5181.jpg'); /* 替换为大背景图路径 */
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 标题样式 (用图片替代文本) */
+        .title {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 1253px; /* 替换为标题图片的实际宽度 */
+            height: 235px; /* 替换为标题图片的实际高度 */
+            margin-bottom: 20px;
+        }
+
+        /* 按钮样式 (用图片替代按钮) */
+        .enter-button {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/73e5a7351a619f2b.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 678px; /* 替换为按钮图片的实际宽度 */
+            height: 116px; /* 替换为按钮图片的实际高度 */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 按钮悬停效果 */
+        .enter-button:hover {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/73e5a7351a619f2b.png'); /* 替换为按钮悬停时的图片路径 */
+        }
+
+        /* 岛屿的样式 (可以根据切图调整位置和大小) */
+        .island {
+            position: absolute;
+            width: 100px; /* 替换为岛屿图片的实际宽度 */
+            height: 100px; /* 替换为岛屿图片的实际高度 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为岛屿图片路径 */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 示例岛屿位置 */
+        .island-1 {
+            top: 20%;
+            left: 30%;
+        }
+
+        .island-2 {
+            top: 40%;
+            left: 60%;
+        }
+
+        .island-3 {
+            top: 70%;
+            left: 40%;
+        }
+
+        /* 添加更多岛屿样式 */
+    </style>
+</head>
+<body>
+
+    <!-- 背景区域 -->
+    <div class="background">
+        <!-- 标题 -->
+        <div class="title"></div>
+        
+        <!-- 岛屿布局 -->
+        <div class="island island-1"></div>
+        <div class="island island-2"></div>
+        <div class="island island-3"></div>
+        <!-- 可以继续添加更多岛屿 -->
+
+        <!-- 进入按钮 -->
+        <button class="enter-button" onclick="window.location.href='nextpage.html';"></button>
+    </div>
+
+</body>
+</html>
