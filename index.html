@@ -29,6 +29,7 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
             background-size: contain; /* 保持比例缩放 */
             background-repeat: no-repeat;
+            background-position: center;
             width: 68%; /* 宽度为页面的 68%，可根据需要调整 */
             aspect-ratio: 5.1 / 1; /* 设置宽高比，例如 4:1 */
         }
@@ -41,8 +42,15 @@
             width: 35%; /* 按钮宽度为页面宽度的 20% */
             border: none;
             cursor: pointer;
-            margin-top: 500px; /* 与标题的间距 */
+            margin-top: 200px; /* 与标题的间距 */
             aspect-ratio: 5.8 / 1; /* 设置宽高比，例如 5:2 */
+             /* 移除按钮默认样式 */
+    border: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent; /* 确保背景色透明 */
+    outline: none; /* 去掉按钮的聚焦边框 */
+    cursor: pointer;
         }
 
         /* 按钮悬停效果 */
