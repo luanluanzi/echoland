@@ -9,21 +9,22 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            overflow: hidden;
         }
 
         /* 背景图片 */
         .background {
-            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d088b2cbb1cc5181.jpg'); /* 替换为大背景图路径 */
-            background-size: cover; /* 让背景图按比例缩放以覆盖整个页面 */
-            background-position: center; /* 居中对齐背景图 */
-            background-repeat: no-repeat; /* 禁止重复背景图 */
-            height: 100%;
-            display: flex; /* 使用 Flexbox 布局 */
-            flex-direction: column; /* 垂直方向布局 */
-            justify-content: center; /* 内容垂直居中 */
-            align-items: center; /* 内容水平居中 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d088b2cbb1cc5181.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
         /* 标题样式 (用图片替代文本) */
         .title {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
@@ -39,18 +40,13 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/73e5a7351a619f2b.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
-            width: 35%; /* 按钮宽度为页面宽度的 20% */
+            width: 30%; /* 按钮宽度为页面宽度的 20% */
             border: none;
             cursor: pointer;
             margin-top: 200px; /* 与标题的间距 */
             aspect-ratio: 5.8 / 1; /* 设置宽高比，例如 5:2 */
-             /* 移除按钮默认样式 */
-    border: none;
-    padding: 0;
-    margin: 0;
-    background-color: transparent; /* 确保背景色透明 */
-    outline: none; /* 去掉按钮的聚焦边框 */
-    cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
         }
 
         /* 按钮悬停效果 */
@@ -61,7 +57,7 @@
         /* 岛屿的样式 (可以根据切图调整位置和大小) */
         .island {
             position: absolute;
-            background-image: url('island-image.png'); /* 替换为岛屿图片路径 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为岛屿图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
             width: 60%; /* 根据屏幕宽度调整岛屿大小 */
@@ -69,8 +65,8 @@
 
         /* 示例岛屿位置 */
         .island-1 {
-            top: 8%;
-            left: 50%;
+            bottom: 0%;
+            left: 30%;
         }
 
         /* 添加更多岛屿样式 */
