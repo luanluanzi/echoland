@@ -27,6 +27,32 @@
             position: relative; /* 关键：设置为相对定位，供子元素定位 */
             width: 100%; /* 小岛宽度 */
         }
+        /* 音乐开关按钮样式 */
+        .music-toggle-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://t.tutu.to/img/RX2kP'); /* 替换为音乐开启按钮图片 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            z-index: 3;
+        }
+        /* 渐变效果 */
+        .gradient-overlay {
+            position: absolute;
+            top: 0%; /* 这个值可以根据标题位置进行调整 */
+            left: 0;
+            width: 100%;
+            height: 80%; /* 覆盖除标题下方外的区域 */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%); /* 从透明渐变到半透明黑色 */
+            z-index: 2; /* 确保它位于背景下方，但在其他内容上方 */
+        }
+
         /* 标题样式 (用图片替代文本) */
         .title {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
@@ -37,7 +63,7 @@
             top: 33%; /* 距离背景顶部的相对距离 */
             left: 20%; /* 距离背景左侧的相对距离 */
             position: absolute; /* 绝对定位 */
-            z-index: 2; /* 标题层级较低 */
+            z-index: 3; /* 标题层级较低 */
         }
 
         /* 按钮样式 (用图片替代按钮) */
@@ -55,7 +81,7 @@
             bottom: 6%; /* 距离背景顶部的相对距离 */
             left: 35%; /* 距离背景左侧的相对距离 */
             position: absolute; /* 绝对定位 */
-            z-index: 3; /* 最上层 */
+            z-index: 4; /* 最上层 */
         }
 
         /* 按钮悬停效果 */
@@ -186,18 +212,20 @@
     <div class="background">
         <!-- 标题 -->
         <div class="title"></div>
+         <!-- 渐变层 -->
+         <div class="gradient-overlay"></div>
         <!-- 云层 -->
-    <div class="cloud cloud-bottom"></div>
-    <div class="cloud cloud-middle"></div>
-    <div class="cloud cloud-upper"></div>
-        
+         <div class="cloud cloud-bottom"></div>
+         <div class="cloud cloud-middle"></div>
+         <div class="cloud cloud-upper"></div>
        <!-- 五个小岛 -->
        <div class="island island1"></div>
        <div class="island island2"></div>
        <div class="island island3"></div>
        <div class="island island4"></div>
        <div class="island island5"></div>
-
+        <!-- 音乐开关按钮 -->
+        <button class="music-toggle-button" onclick="toggleMusic()"></button>
         <!-- 进入按钮 -->
         <button class="enter-button" onclick="window.location.href='nextpage.html';"></button>
          <!-- 音乐文件 -->
@@ -206,6 +234,25 @@
             您的浏览器不支持 HTML5 音频。
         </audio>
     </div>
+    <script>
+        // 获取音频和按钮元素
+        const music = document.getElementById('backgroundMusic');
+        const musicButton = document.querySelector('.music-toggle-button');
 
+        // 默认开启音乐
+        let isMusicPlaying = true;
+
+        // 切换音乐开关
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                music.pause(); // 暂停音乐
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RX6M4")'; // 音乐关闭图标
+            } else {
+                music.play(); // 播放音乐
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RX2kP")'; // 音乐开启图标
+            }
+            isMusicPlaying = !isMusicPlaying; // 切换状态
+        }
+    </script>
 </body>
 </html>
