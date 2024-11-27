@@ -14,7 +14,7 @@
 
         /* 背景图片 */
         .background {
-            background-image: url('首页+首次背景.jpg');
+            background-image: url('https://t.tutu.to/img/RXf7M');
             background-size: contain; /* 背景保持完整，不会裁剪 */
             background-position: center;
             background-repeat: no-repeat;
@@ -24,15 +24,20 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative; /* 关键：设置为相对定位，供子元素定位 */
+            width: 100%; /* 小岛宽度 */
         }
         /* 标题样式 (用图片替代文本) */
         .title {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/4c06287fe3d8cc74.png'); /* 替换为标题图路径 */
             background-size: contain; /* 保持比例缩放 */
             background-repeat: no-repeat;
-            background-position: center;
-            width: 68%; /* 宽度为页面的 68%，可根据需要调整 */
+            width: 60%; /* 宽度为页面的 60%，可根据需要调整 */
             aspect-ratio: 5.1 / 1; /* 设置宽高比，例如 4:1 */
+            top: 33%; /* 距离背景顶部的相对距离 */
+            left: 20%; /* 距离背景左侧的相对距离 */
+            position: absolute; /* 绝对定位 */
+            z-index: 2; /* 标题层级较低 */
         }
 
         /* 按钮样式 (用图片替代按钮) */
@@ -40,13 +45,17 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/73e5a7351a619f2b.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
-            width: 30%; /* 按钮宽度为页面宽度的 20% */
+            width: 30%; /* 按钮宽度为页面宽度的 30% */
             border: none;
             cursor: pointer;
             margin-top: 200px; /* 与标题的间距 */
             aspect-ratio: 5.8 / 1; /* 设置宽高比，例如 5:2 */
             background-color: transparent; /* 确保背景色透明 */
             outline: none; /* 去掉按钮的聚焦边框 */
+            bottom: 6%; /* 距离背景顶部的相对距离 */
+            left: 35%; /* 距离背景左侧的相对距离 */
+            position: absolute; /* 绝对定位 */
+            z-index: 3; /* 最上层 */
         }
 
         /* 按钮悬停效果 */
@@ -54,22 +63,121 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d13a0d1ef11651b9.png'); /* 替换为按钮悬停时的图片路径 */
         }
 
-        /* 岛屿的样式 (可以根据切图调整位置和大小) */
+        /* 添加浮动动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0); /* 初始位置 */
+    }
+    50% {
+        transform: translateY(-10px); /* 上浮 */
+    }
+    100% {
+        transform: translateY(0); /* 返回初始位置 */
+    }
+}
+
+        /* 小岛通用样式 */
         .island {
             position: absolute;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为岛屿图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
-            width: 60%; /* 根据屏幕宽度调整岛屿大小 */
+            background-position: center;
+            animation: float 4s ease-in-out infinite; /* 应用动画 */
+        }
+        
+        /* 各小岛的具体位置 */
+        .island1 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为小岛1插图路径 */
+            bottom: -3.5%;
+            left: 23%;
+            width: 54%; /* 小岛宽度 */
+            aspect-ratio:1; /* 设置宽高比，例如 4:1 */
+            z-index: 2; /* 中间层 */
         }
 
-        /* 示例岛屿位置 */
-        .island-1 {
-            bottom: 0%;
-            left: 30%;
+        .island2 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/4e52c5f135d10b3d.png'); /* 替换为小岛2插图路径 */
+            top: 26%;
+            left: 8%;
+            width: 18%; /* 小岛宽度 */
+            aspect-ratio:349/340; /* 设置宽高比，例如 4:1 */
         }
 
-        /* 添加更多岛屿样式 */
+        .island3 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/adb922b8548be3c9.png'); /* 替换为小岛3插图路径 */
+            top: 23%;
+            left: 32%;
+            width: 14%; /* 小岛宽度 */
+            aspect-ratio:269/261; /* 设置宽高比，例如 4:1 */
+        }
+
+        .island4 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/5f9d13e06c7f8345.png'); /* 替换为小岛4插图路径 */
+            top: 23%;
+            left: 55%;
+            width: 14%; /* 小岛宽度 */
+            aspect-ratio:263/270; /* 设置宽高比，例如 4:1 */
+        }
+
+        .island5 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/b71c7a17c16764ad.png'); /* 替换为小岛5插图路径 */
+            top: 26%;
+            left: 75%;
+            width: 18%; /* 小岛宽度 */
+            aspect-ratio:379/345; /* 设置宽高比，例如 4:1 */
+        }
+/* 添加云层的左右移动动画 */
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0); /* 初始位置 */
+    }
+    50% {
+        transform: translateX(20px); /* 向右移动 */
+    }
+    100% {
+        transform: translateX(0); /* 返回初始位置 */
+    }
+}
+        
+.cloud {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto; /* 自动调整高度保持比例 */
+    pointer-events: none; /* 防止鼠标事件影响其他操作 */
+    opacity: 0.8; /* 透明度，营造云的效果 */
+}
+
+/* 云层 - 底端 */
+.cloud-bottom {
+    background-image: url('https://t.tutu.to/img/RXptX'); /* 替换为底端云图路径 */
+    bottom: 0; /* 贴近底部 */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 3; /* 最底层 */
+    aspect-ratio:1920/279; /* 设置宽高比，例如 4:1 */
+}
+
+/* 云层 - 中间 */
+.cloud-middle {
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/7658e0b05b18a64e.png'); /* 替换为中间云图路径 */
+    top: 45%; /* 距离顶部 40% */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 1; /* 中间层 */
+    aspect-ratio:1920/393; /* 设置宽高比，例如 4:1 */
+}
+
+/* 云层 - 中间偏上 */
+.cloud-upper {
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/66bf5ca83b511344.png'); /* 替换为中间偏上云图路径 */
+    top: 30%; /* 距离顶部 20% */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 0; /* 最上层 */
+    aspect-ratio:1920/407; /* 设置宽高比，例如 4:1 */
+}
     </style>
 </head>
 <body>
@@ -78,12 +186,17 @@
     <div class="background">
         <!-- 标题 -->
         <div class="title"></div>
+        <!-- 云层 -->
+    <div class="cloud cloud-bottom"></div>
+    <div class="cloud cloud-middle"></div>
+    <div class="cloud cloud-upper"></div>
         
-        <!-- 岛屿布局 -->
-        <div class="island island-1"></div>
-        <div class="island island-2"></div>
-        <div class="island island-3"></div>
-        <!-- 可以继续添加更多岛屿 -->
+       <!-- 五个小岛 -->
+       <div class="island island1"></div>
+       <div class="island island2"></div>
+       <div class="island island3"></div>
+       <div class="island island4"></div>
+       <div class="island island5"></div>
 
         <!-- 进入按钮 -->
         <button class="enter-button" onclick="window.location.href='nextpage.html';"></button>
