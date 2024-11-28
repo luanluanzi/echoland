@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 整体页面布局 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* 背景图片 */
+        .background {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/5cf925fe17e66784.jpg');
+            background-size: contain; /* 背景保持完整，不会裁剪 */
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* 关键：设置为相对定位，供子元素定位 */
+            width: 100%; /* 小岛宽度 */
+        }
+
+        /* 音乐开关按钮样式 */
+        .music-toggle-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://t.tutu.to/img/RZPJr'); /* 替换为音乐开启按钮图片 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            z-index: 3;
+        }
+
+/* 其他动画 */
+@keyframes island1-transform {
+    to {
+        transform: scale(1.45) translateY(7.4%);
+    }
+}
+
+@keyframes island2-transform {
+    to {
+        transform: scale(1.2) translate(-4.6%, 20%);
+    }
+}
+
+@keyframes island3-transform {
+    to {
+        transform: scale(1.3) translate(-2.7%, 28%);
+    }
+}
+
+@keyframes island4-transform {
+    to {
+        transform: scale(1.3) translate(2.7%, 25%);
+    }
+}
+
+@keyframes island5-transform {
+    to {
+        transform: scale(1.2) translate(4.6%, 23%);
+    }
+}
+
+@keyframes cloud-transform {
+    to {
+        transform: translateY(9.2%);
+    }
+}
+
+/* 点击动画的类 */
+.island1.animate {
+    animation: island1-transform 2s ease forwards;
+}
+
+.island2.animate {
+    animation: island2-transform 2s ease forwards;
+}
+
+.island3.animate {
+    animation: island3-transform 2s ease forwards;
+}
+
+.island4.animate {
+    animation: island4-transform 2s ease forwards;
+}
+
+.island5.animate {
+    animation: island5-transform 2s ease forwards;
+}
+
+.cloud.animate {
+    animation: cloud-transform 2s ease forwards;
+}
+
+
+        /* 小岛通用样式 */
+        .island {
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        /* 小岛悬停时的样式 */
+        .island:hover {
+            transform: scale(1.2); /* 放大岛屿 */
+        }
+        /* 各小岛按钮的具体位置 */
+        .island1-1 {
+            background-image: url('https://t.tutu.to/img/RZsfk'); /* 替换为小岛1插图路径 */
+            bottom: 13%;
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            z-index: 5; 
+        }
+
+        .island2-1 {
+            background-image: url('https://t.tutu.to/img/RZJqJ'); /* 替换为小岛2插图路径 */
+            top: 33%;
+            left: 6%;
+            width: 60px;
+            height: 60px;
+            z-index: 5; 
+        }
+
+        .island3-1 {
+            background-image: url('https://t.tutu.to/img/RZOLR'); /* 替换为小岛3插图路径 */
+            top: 31%;
+            left: 30%;
+            width: 60px;
+            height: 60px;
+            z-index: 5; 
+        }
+
+        .island4-1 {
+            background-image: url('https://t.tutu.to/img/RZSTz'); /* 替换为小岛4插图路径 */
+            top: 30%;
+            left: 53%;
+            width: 60px;
+            height: 60px;
+            z-index: 5; 
+        }
+
+        .island5-1 {
+            background-image: url('https://t.tutu.to/img/RZome'); /* 替换为小岛5插图路径 */
+            top: 33%;
+            left: 75%;
+            width: 60px;
+            height: 60px;
+            z-index: 5; 
+        }
+/* 显示的额外图片 */
+.island-hover-image {
+            display: none;
+            position: absolute;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 182px;
+            height: 121px;
+            z-index: 5;
+        }
+
+        /* 鼠标悬停时，显示旁边的图片 */
+        .island1-1:hover  .island-hover-image1,
+        .island2-1:hover  .island-hover-image2,
+        .island3-1:hover  .island-hover-image3,
+        .island4-1:hover  .island-hover-image4,
+        .island5-1:hover  .island-hover-image5 {
+            display: block;
+        }
+
+        /* 新的旁边的图片样式 */
+        .island-hover-image1 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/c7464002da6d49b2.png'); /* 新图片 */
+            top: -100%;
+            left: 80%;
+        }
+
+        .island-hover-image2 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/1c93fcc40388fc7d.png'); /* 新图片 */
+            top: 30%;
+            left: 80%;
+        }
+
+        .island-hover-image3 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/425567a0a28a6be2.png'); /* 新图片 */
+            top: 30%;
+            left: 80%;
+        }
+
+        .island-hover-image4 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/7efbefdaa7894709.png'); /* 新图片 */
+            top: 30%;
+            left: 80%;
+        }
+
+        .island-hover-image5 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/96ba44ee7a6da4a5.png'); /* 新图片 */
+            top: 30%;
+            left: 80%;
+        }
+        /* 各小岛的具体位置 */
+        .island1 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/6e2a5a67314b4d9d.png'); /* 替换为小岛1插图路径 */
+            bottom: -3.5%;
+            left: 23%;
+            width: 54%; /* 小岛宽度 */
+            aspect-ratio:1; /* 设置宽高比，例如 4:1 */
+            z-index: 2; /* 中间层 */
+        }
+
+        .island2 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/4e52c5f135d10b3d.png'); /* 替换为小岛2插图路径 */
+            top: 26%;
+            left: 8%;
+            width: 18%; /* 小岛宽度 */
+            aspect-ratio:349/340; /* 设置宽高比，例如 4:1 */
+        }
+
+        .island3 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/adb922b8548be3c9.png'); /* 替换为小岛3插图路径 */
+            top: 24%;
+            left: 32%;
+            width: 14%; /* 小岛宽度 */
+            aspect-ratio:269/261; /* 设置宽高比，例如 4:1 */
+        }
+
+        .island4 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/5f9d13e06c7f8345.png'); /* 替换为小岛4插图路径 */
+            top: 23%;
+            left: 55%;
+            width: 14%; /* 小岛宽度 */
+            aspect-ratio:263/270; /* 设置宽高比，例如 4:1 */
+        }
+
+        .island5 {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/b71c7a17c16764ad.png'); /* 替换为小岛5插图路径 */
+            top: 26%;
+            left: 75%;
+            width: 18%; /* 小岛宽度 */
+            aspect-ratio:379/345; /* 设置宽高比，例如 4:1 */
+        }
+        
+.cloud {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: auto; /* 自动调整高度保持比例 */
+    pointer-events: none; /* 防止鼠标事件影响其他操作 */
+    opacity: 0.8; /* 透明度，营造云的效果 */
+}
+
+/* 云层 - 底端 */
+.cloud-bottom {
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/f99f100fc96bb690.png'); /* 替换为底端云图路径 */
+    bottom: 0; /* 贴近底部 */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 3; /* 最底层 */
+    aspect-ratio:1920/279; /* 设置宽高比，例如 4:1 */
+}
+
+/* 云层 - 中间 */
+.cloud-middle {
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/7658e0b05b18a64e.png'); /* 替换为中间云图路径 */
+    top: 45%; /* 距离顶部 40% */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 1; /* 中间层 */
+    aspect-ratio:1920/393; /* 设置宽高比，例如 4:1 */
+}
+
+/* 云层 - 中间偏上 */
+.cloud-upper {
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/66bf5ca83b511344.png'); /* 替换为中间偏上云图路径 */
+    top: 30%; /* 距离顶部 20% */
+    left: 0;
+    width: 100%; /* 小岛宽度 */
+    z-index: 0; /* 最上层 */
+    aspect-ratio:1920/407; /* 设置宽高比，例如 4:1 */
+}
+/* 右上角图片与按钮 */
+.top-right {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 254px;
+            height: 104px;
+            background-image: url('https://t.tutu.to/img/RZhAQ');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 4; /* 增加按钮的层级 */
+        }
+
+.top-right-button {
+            position: absolute;
+            top: 138px;
+            right: 30px;
+            width: 103px;
+            height: 40px;
+            background-image: url('https://t.tutu.to/img/RZqG4'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+            z-index: 4; /* 增加按钮的层级 */
+        }
+        /* 按钮悬停效果 */
+        .top-right-button:hover {
+            background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 背景区域 -->
+    <div class="background">
+        <!-- 云层 -->
+         <div class="cloud cloud-bottom"></div>
+         <div class="cloud cloud-middle"></div>
+         <div class="cloud cloud-upper"></div>
+       <!-- 五个小岛 -->
+       <div class="island island1"></div>
+       <div class="island island2"></div>
+       <div class="island island3"></div>
+       <div class="island island4"></div>
+       <div class="island island5"></div>
+       <!-- 五个小岛的按钮 -->
+       <div class="island island1-1" onclick="window.location.href='Personal Island.html'">
+        <div class="island-hover-image island-hover-image1"></div>
+    </div>
+    <div class="island island2-1" onclick="window.location.href='Sound Circus.html'">
+        <div class="island-hover-image island-hover-image2"></div>
+    </div>
+    <div class="island island3-1" onclick="window.location.href='Image Gallery.html'">
+        <div class="island-hover-image island-hover-image3"></div>
+    </div>
+    <div class="island island4-1" onclick="window.location.href='Emotional Bar.html'">
+        <div class="island-hover-image island-hover-image4"></div>
+    </div>
+    <div class="island island5-1" onclick="window.location.href='Text Stadium.html'">
+        <div class="island-hover-image island-hover-image5"></div>
+    </div> 
+        <!-- 音乐开关按钮 -->
+        <button class="music-toggle-button" onclick="toggleMusic()"></button>
+        <!-- 右上角图片与按钮 -->
+        <div class="top-right"></div>
+        <button class="top-right-button" onclick="Login()"></button>
+         <!-- 音乐文件 -->
+        <audio id="backgroundMusic" loop autoplay>
+            <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
+    </div>
+    <script>
+        // 获取音频和按钮元素
+        const music = document.getElementById('backgroundMusic');
+        const musicButton = document.querySelector('.music-toggle-button');
+
+        // 默认开启音乐
+        let isMusicPlaying = true;
+
+        // 切换音乐开关
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                music.pause(); // 暂停音乐
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
+            } else {
+                music.play(); // 播放音乐
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
+            }
+            isMusicPlaying = !isMusicPlaying; // 切换状态
+        }
+
+    // 动态添加点击动画类
+    document.querySelector('.island1').classList.add('animate');
+    document.querySelector('.island2').classList.add('animate');
+    document.querySelector('.island3').classList.add('animate');
+    document.querySelector('.island4').classList.add('animate');
+    document.querySelector('.island5').classList.add('animate');
+
+    // 给所有云朵添加动画类
+    document.querySelectorAll('.cloud').forEach(cloud => {
+        cloud.classList.add('animate');
+    });
+    </script>
+</body>
+</html>
