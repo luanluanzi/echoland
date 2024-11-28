@@ -11,6 +11,30 @@
             height: 100%;
             overflow: hidden;
         }
+/* 放大动画的图片样式 */
+.intro-image {
+    position: fixed; /* 固定在视口上 */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 宽度和高度铺满整个屏幕 */
+    height: 100vh;
+    background-image: url('场景过渡尝试.jpg'); /* 替换为图片1路径 */
+    background-size: cover; /* 让背景图覆盖整个区域 */
+    background-position: center;
+    animation: zoomInOut 2s ease-out forwards; /* 应用放大和消失动画 */
+    z-index: 99; /* 确保图片在最上面 */
+}
+
+/* 放大并消失的动画 */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1); /* 初始大小 */
+    }
+    100% {
+        transform: scale(1.5); /* 放大到1.5倍 */
+        opacity: 0; /* 动画结束时图片消失 */
+    }
+}
 
         /* 背景图片 */
         .background {
@@ -77,7 +101,8 @@
     </style>
 </head>
 <body>
-
+    <!-- 放大动画的图片 -->
+    <div class="intro-image"></div>
     <!-- 背景区域 -->
     <div class="background">
         <!-- 音乐开关按钮 -->
