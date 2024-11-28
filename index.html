@@ -14,7 +14,7 @@
 
         /* 背景图片 */
         .background {
-            background-image: url('https://t.tutu.to/img/RXf7M');
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/5cf925fe17e66784.jpg');
             background-size: contain; /* 背景保持完整，不会裁剪 */
             background-position: center;
             background-repeat: no-repeat;
@@ -27,20 +27,21 @@
             position: relative; /* 关键：设置为相对定位，供子元素定位 */
             width: 100%; /* 小岛宽度 */
         }
+
         /* 音乐开关按钮样式 */
         .music-toggle-button {
             position: absolute;
             top: 30px;
             left: 30px;
-            width: 50px;
-            height: 50px;
-            background-image: url('https://t.tutu.to/img/RX2kP'); /* 替换为音乐开启按钮图片 */
+            width: 40px;
+            height: 40px;
+            background-image: url('https://t.tutu.to/img/RZPJr'); /* 替换为音乐开启按钮图片 */
             background-size: contain;
             background-repeat: no-repeat;
             border: none;
             cursor: pointer;
             background-color: transparent;
-            z-index:4;
+            z-index: 3;
         }
         /* 渐变效果 */
         .gradient-overlay {
@@ -89,7 +90,7 @@
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/26/d13a0d1ef11651b9.png'); /* 替换为按钮悬停时的图片路径 */
         }
 
-        /* 添加浮动动画 */
+        /* 常驻浮动动画 */
 @keyframes float {
     0% {
         transform: translateY(0); /* 初始位置 */
@@ -101,6 +102,69 @@
         transform: translateY(0); /* 返回初始位置 */
     }
 }
+
+/* 其他动画 */
+@keyframes island1-transform {
+    to {
+        transform: scale(1.45) translateY(7.4%);
+    }
+}
+
+@keyframes island2-transform {
+    to {
+        transform: scale(1.2) translate(-4.6%, 20%);
+    }
+}
+
+@keyframes island3-transform {
+    to {
+        transform: scale(1.3) translate(-2.7%, 28%);
+    }
+}
+
+@keyframes island4-transform {
+    to {
+        transform: scale(1.3) translate(2.7%, 25%);
+    }
+}
+
+@keyframes island5-transform {
+    to {
+        transform: scale(1.2) translate(4.6%, 23%);
+    }
+}
+
+@keyframes cloud-transform {
+    to {
+        transform: translateY(9.2%);
+    }
+}
+
+/* 点击动画的类 */
+.island1.animate {
+    animation: island1-transform 2s ease forwards;
+}
+
+.island2.animate {
+    animation: island2-transform 2s ease forwards;
+}
+
+.island3.animate {
+    animation: island3-transform 2s ease forwards;
+}
+
+.island4.animate {
+    animation: island4-transform 2s ease forwards;
+}
+
+.island5.animate {
+    animation: island5-transform 2s ease forwards;
+}
+
+.cloud.animate {
+    animation: cloud-transform 2s ease forwards;
+}
+
 
         /* 小岛通用样式 */
         .island {
@@ -131,7 +195,7 @@
 
         .island3 {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/27/adb922b8548be3c9.png'); /* 替换为小岛3插图路径 */
-            top: 23%;
+            top: 24%;
             left: 32%;
             width: 14%; /* 小岛宽度 */
             aspect-ratio:269/261; /* 设置宽高比，例如 4:1 */
@@ -152,18 +216,6 @@
             width: 18%; /* 小岛宽度 */
             aspect-ratio:379/345; /* 设置宽高比，例如 4:1 */
         }
-/* 添加云层的左右移动动画 */
-@keyframes moveLeftRight {
-    0% {
-        transform: translateX(0); /* 初始位置 */
-    }
-    50% {
-        transform: translateX(20px); /* 向右移动 */
-    }
-    100% {
-        transform: translateX(0); /* 返回初始位置 */
-    }
-}
         
 .cloud {
     position: absolute;
@@ -177,7 +229,7 @@
 
 /* 云层 - 底端 */
 .cloud-bottom {
-    background-image: url('https://t.tutu.to/img/RXptX'); /* 替换为底端云图路径 */
+    background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/f99f100fc96bb690.png'); /* 替换为底端云图路径 */
     bottom: 0; /* 贴近底部 */
     left: 0;
     width: 100%; /* 小岛宽度 */
@@ -204,6 +256,72 @@
     z-index: 0; /* 最上层 */
     aspect-ratio:1920/407; /* 设置宽高比，例如 4:1 */
 }
+/* 右上角图片与按钮 */
+.top-right {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 254px;
+            height: 104px;
+            background-image: url('https://t.tutu.to/img/RZhAQ');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 4; /* 增加按钮的层级 */
+        }
+
+.top-right-button {
+            display: none;
+            position: absolute;
+            top: 138px;
+            right: 30px;
+            width: 103px;
+            height: 40px;
+            background-image: url('https://t.tutu.to/img/RZqG4'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+            z-index: 4; /* 增加按钮的层级 */
+        }
+        /* 按钮悬停效果 */
+        .top-right-button:hover {
+            background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
+        }
+        /* 首次应用提示 */
+        .first-use {
+            display: none;
+            position: absolute;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/a40fdaae141a62ba.png'); /* 替换为按钮图片路径 */
+            position: center;
+            top: 0;
+            right: 0; /* 确保从左上角开始 */
+            width: 100vw;  /* 使用视口宽度来确保宽度覆盖 */
+            height: 100vh; /* 使用视口高度来确保高度覆盖 */
+            background-size: cover; /* 使背景图适应容器的大小并保持比例 */
+            z-index: 6; /* 增加按钮的层级 */
+        }
+
+        .first-use-button {
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: none;
+            position: center;
+            width: 160px;
+            height: 52px;
+            background-image: url('https://t.tutu.to/img/RZaKh'); /* 替换为按钮图片路径 */
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+            z-index: 6; /* 增加按钮的层级 */
+        }
+
+        .first-use-button:hover {
+            background-image: url('https://t.tutu.to/img/RZNIq'); /* 替换为按钮悬停时的图片路径 */
+        }
     </style>
 </head>
 <body>
@@ -226,8 +344,15 @@
        <div class="island island5"></div>
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
-        <!-- 进入按钮 -->
-        <button class="enter-button" onclick="window.location.href='nextpage.html';"></button>
+       <!-- 进入按钮 -->
+       <button class="enter-button" onclick="startApp()"></button>
+        <!-- 右上角图片与按钮 -->
+        <div class="top-right"></div>
+        <button class="top-right-button" onclick="Login()"></button>
+
+        <!-- 首次应用提示 -->
+        <div class="first-use"></div>
+        <button class="first-use-button" onclick="Login()"></button>
          <!-- 音乐文件 -->
         <audio id="backgroundMusic" loop autoplay>
             <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
@@ -246,13 +371,56 @@
         function toggleMusic() {
             if (isMusicPlaying) {
                 music.pause(); // 暂停音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RX6M4")'; // 音乐关闭图标
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
             } else {
                 music.play(); // 播放音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RX2kP")'; // 音乐开启图标
+                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
             }
             isMusicPlaying = !isMusicPlaying; // 切换状态
         }
+        function startApp() {
+            // 隐藏标题、按钮、渐变遮罩
+            document.querySelector('.title').style.display = 'none';
+            document.querySelector('.enter-button').style.display = 'none';
+            document.querySelector('.gradient-overlay').style.opacity = '0';
+            // 延迟 1 秒后显示元素
+        setTimeout(function() {
+            document.querySelector('.top-right').style.display = 'block';
+            document.querySelector('.top-right-button').style.display = 'block';
+        }, 1000); // 延迟 1000 毫秒（1 秒）
+        // 延迟 4 秒后显示元素
+        setTimeout(function() {
+            document.querySelector('.first-use').style.display = 'block';
+            document.querySelector('.first-use-button').style.display = 'block';
+        }, 4000); // 延迟 2000 毫秒（2 秒）
+        }
+// 获取按钮元素
+const enterButton = document.querySelector('.enter-button');
+
+// 点击事件触发动画
+enterButton.addEventListener('click', () => {
+    // 动态添加点击动画类
+    document.querySelector('.island1').classList.add('animate');
+    document.querySelector('.island2').classList.add('animate');
+    document.querySelector('.island3').classList.add('animate');
+    document.querySelector('.island4').classList.add('animate');
+    document.querySelector('.island5').classList.add('animate');
+
+    // 给所有云朵添加动画类
+    document.querySelectorAll('.cloud').forEach(cloud => {
+        cloud.classList.add('animate');
+    });
+});
+
+
+        function closeFirstUse() {
+            document.querySelector('.first-use').style.display = 'block';
+        }
+        // 登录函数，点击按钮后跳转到 homepage 页面
+function Login() {
+    window.location.href = "homepage.html";  // 跳转到主页
+}
+
     </script>
 </body>
 </html>
