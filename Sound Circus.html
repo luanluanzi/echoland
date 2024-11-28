@@ -25,14 +25,18 @@
     z-index: 99; /* 确保图片在最上面 */
 }
 
-/* 放大并消失的动画 */
 @keyframes zoomInOut {
     0% {
         transform: scale(1); /* 初始大小 */
+        opacity: 1; /* 保持完全不透明 */
+    }
+    75% {
+        transform: scale(1.5); /* 放大到1.5倍 */
+        opacity: 1; /* 在前3秒不变 */
     }
     100% {
         transform: scale(1.5); /* 放大到1.5倍 */
-        opacity: 50; /* 动画结束时图片消失 */
+        opacity: 0; /* 最后1秒内逐渐消失 */
     }
 }
 
