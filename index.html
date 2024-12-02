@@ -15,7 +15,7 @@
         /* 背景图片 */
         .background {
             background-image: url('https://s3.bmp.ovh/imgs/2024/11/28/5cf925fe17e66784.jpg');
-            background-size: contain; /* 背景保持完整，不会裁剪 */
+            background-size: cover; /* 背景完全覆盖，不会留白 */
             background-position: center;
             background-repeat: no-repeat;
             width: 100vw;
@@ -264,7 +264,7 @@
             right: 30px;
             width: 254px;
             height: 104px;
-            background-image: url('https://t.tutu.to/img/RZhAQ');
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/8ccf3c7dba9a53a8.png');
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 4; /* 增加按钮的层级 */
@@ -311,7 +311,7 @@
             position: center;
             width: 160px;
             height: 52px;
-            background-image: url('https://t.tutu.to/img/RZaKh'); /* 替换为按钮图片路径 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/120c0aac1872f818.png'); /* 替换为按钮图片路径 */
             border: none;
             cursor: pointer;
             background-color: transparent; /* 确保背景色透明 */
@@ -320,7 +320,7 @@
         }
 
         .first-use-button:hover {
-            background-image: url('https://t.tutu.to/img/RZNIq'); /* 替换为按钮悬停时的图片路径 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/ad36b5a53a17e002.png'); /* 替换为按钮悬停时的图片路径 */
         }
     </style>
 </head>
@@ -388,11 +388,11 @@
             document.querySelector('.top-right').style.display = 'block';
             document.querySelector('.top-right-button').style.display = 'block';
         }, 1000); // 延迟 1000 毫秒（1 秒）
-        // 延迟 4 秒后显示元素
+        // 延迟 2 秒后显示元素
         setTimeout(function() {
             document.querySelector('.first-use').style.display = 'block';
             document.querySelector('.first-use-button').style.display = 'block';
-        }, 4000); // 延迟 2000 毫秒（2 秒）
+        }, 2000); // 延迟 2000 毫秒（2 秒）
         }
 // 获取按钮元素
 const enterButton = document.querySelector('.enter-button');

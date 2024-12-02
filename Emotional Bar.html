@@ -11,11 +11,41 @@
             height: 100%;
             overflow: hidden;
         }
-
+        /* 放大动画的图片样式 */
+        .intro-image {
+            position: fixed; /* 固定在视口上 */
+            top: 0;
+            left: 0;
+            width: 100vw; /* 宽度和高度铺满整个屏幕 */
+            height: 100vh;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/d5b95b1ac703a490.jpg'); /* 替换为图片1路径 */
+            background-size: cover; /* 让背景图覆盖整个区域 */
+            background-position: center;
+            animation: zoomInOut 2s ease-out forwards; /* 应用放大和消失动画 */
+            z-index: 99; /* 确保图片在最上面 */
+        }
+        @keyframes zoomInOut {
+            0% {
+            transform: scale(1); /* 初始大小 */
+            opacity: 1; /* 保持完全不透明 */
+            }
+        66% {
+            transform: scale(1.2); /* 放大到1.2倍 */
+            opacity: 1; /* 在前3秒不变 */
+            }
+        100% {
+            transform: scale(2); /* 放大到1.5倍 */
+            opacity: 0; /* 最后1秒内逐渐消失 */
+            }
+        }
+        /* 动画结束后彻底隐藏 */
+        .hidden {
+            display: none;
+            }
         /* 背景图片 */
         .background {
-            background-image: url('情绪空间尝试.jpg');
-            background-size: contain; /* 背景保持完整，不会裁剪 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/9ca587e4a098eaeb.jpg');
+            background-size: cover; /* 背景完全覆盖，不会留白 */
             background-position: center;
             background-repeat: no-repeat;
             width: 100vw;
@@ -50,7 +80,7 @@
             right: 30px;
             width: 254px;
             height: 104px;
-            background-image: url('https://t.tutu.to/img/RZhAQ');
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/8ccf3c7dba9a53a8.png');
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 4; /* 增加按钮的层级 */
@@ -92,23 +122,44 @@
         </audio>
     </div>
     <script>
-        // 获取音频和按钮元素
-        const music = document.getElementById('backgroundMusic');
-        const musicButton = document.querySelector('.music-toggle-button');
+        // 获取音频元素
+        const introMusic = document.getElementById('introMusic');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+    
+        // 默认先播放入场音乐
+        introMusic.play();
+    
+        // 当入场音乐播放完毕时，切换到背景音乐
+        introMusic.addEventListener('ended', () => {
+            backgroundMusic.play();
+        });
+        // 获取动画图片元素
+        const introImage = document.getElementById('introImage');
 
-        // 默认开启音乐
+        // 监听动画结束事件
+        introImage.addEventListener('animationend', () => {
+            // 动画结束后，隐藏图片
+            introImage.classList.add('hidden');
+        });
+        // 音乐开关控制逻辑
+        const musicBegin = document.querySelector('.music-toggle-button');
         let isMusicPlaying = true;
-
-        // 切换音乐开关
+    
         function toggleMusic() {
             if (isMusicPlaying) {
-                music.pause(); // 暂停音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
+                introMusic.pause();
+                backgroundMusic.pause();
+                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
             } else {
-                music.play(); // 播放音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
+                // 判断当前是否在播放入场音乐
+                if (!introMusic.ended) {
+                    introMusic.play(); // 继续播放入场音乐
+                } else {
+                    backgroundMusic.play(); // 播放背景音乐
+                }
+                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
             }
-            isMusicPlaying = !isMusicPlaying; // 切换状态
+            isMusicPlaying = !isMusicPlaying;
         }
     </script>
 </body>

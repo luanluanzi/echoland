@@ -11,39 +11,42 @@
             height: 100%;
             overflow: hidden;
         }
-/* 放大动画的图片样式 */
-.intro-image {
-    position: fixed; /* 固定在视口上 */
-    top: 0;
-    left: 0;
-    width: 100vw; /* 宽度和高度铺满整个屏幕 */
-    height: 100vh;
-    background-image: url('场景过渡尝试.jpg'); /* 替换为图片1路径 */
-    background-size: cover; /* 让背景图覆盖整个区域 */
-    background-position: center;
-    animation: zoomInOut 4s ease-out forwards; /* 应用放大和消失动画 */
-    z-index: 99; /* 确保图片在最上面 */
-}
-
-@keyframes zoomInOut {
-    0% {
-        transform: scale(1); /* 初始大小 */
-        opacity: 1; /* 保持完全不透明 */
-    }
-    75% {
-        transform: scale(1.5); /* 放大到1.5倍 */
-        opacity: 1; /* 在前3秒不变 */
-    }
-    100% {
-        transform: scale(1.5); /* 放大到1.5倍 */
-        opacity: 0; /* 最后1秒内逐渐消失 */
-    }
-}
+        /* 放大动画的图片样式 */
+        .intro-image {
+            position: fixed; /* 固定在视口上 */
+            top: 0;
+            left: 0;
+            width: 100vw; /* 宽度和高度铺满整个屏幕 */
+            height: 100vh;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/717db0f3910a49ad.jpg'); /* 替换为图片1路径 */
+            background-size: cover; /* 让背景图覆盖整个区域 */
+            background-position: center;
+            animation: zoomInOut 2s ease-out forwards; /* 应用放大和消失动画 */
+            z-index: 99; /* 确保图片在最上面 */
+        }
+        @keyframes zoomInOut {
+            0% {
+            transform: scale(1); /* 初始大小 */
+            opacity: 1; /* 保持完全不透明 */
+            }
+        66% {
+            transform: scale(1.2); /* 放大到1.2倍 */
+            opacity: 1; /* 在前3秒不变 */
+            }
+        100% {
+            transform: scale(2); /* 放大到1.5倍 */
+            opacity: 0; /* 最后1秒内逐渐消失 */
+            }
+        }
+        /* 动画结束后彻底隐藏 */
+        .hidden {
+            display: none;
+            }
 
         /* 背景图片 */
         .background {
-            background-image: url('声音空间尝试.jpg');
-            background-size: contain; /* 背景保持完整，不会裁剪 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/e4a0196fc663b2cc.jpg');
+            background-size: cover; /* 背景完全覆盖，不会留白 */
             background-position: center;
             background-repeat: no-repeat;
             width: 100vw;
@@ -54,6 +57,32 @@
             align-items: center;
             position: relative; /* 关键：设置为相对定位，供子元素定位 */
             width: 100%; /* 小岛宽度 */
+        }
+        /* 星星叠加层 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/589f0ac505019dfe.png'); /* 替换为你的星星图片 */
+            background-size: contain; /* 让星星图片完全覆盖整个区域 */
+            background-position: center;
+            animation: flicker 3s infinite alternate; /* 添加闪烁动画 */
+            pointer-events: none; /* 确保星星层不会干扰其他交互 */
+        }
+
+        /* 星星闪烁的动画 */
+        @keyframes flicker {
+            0% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.6;
+            }
         }
 
         /* 音乐开关按钮样式 */
@@ -78,7 +107,7 @@
             right: 30px;
             width: 254px;
             height: 104px;
-            background-image: url('https://t.tutu.to/img/RZhAQ');
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/8ccf3c7dba9a53a8.png');
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 4; /* 增加按钮的层级 */
@@ -98,47 +127,171 @@
             outline: none; /* 去掉按钮的聚焦边框 */
             z-index: 4; /* 增加按钮的层级 */
         }
-        /* 按钮悬停效果 */
-        .top-right-button:hover {
+         /* 按钮悬停效果 */
+         .top-right-button:hover {
             background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
         }
+        /* 音乐播放器 */
+        .music-bottom {
+            position: absolute;
+            top: 56%;
+            right: 38%;
+            width: 290px;
+            height: 188px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/1a05d59df8568eb8.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 4; /* 增加按钮的层级 */
+        }
+        .music-loop {
+            position: absolute;
+            top: 28%;
+            right: 40%;
+            width: 245px;
+            height: 245px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/2cc8beb5a02a44d6.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 0.5s ease; /* 过渡效果 */
+        }
+        
+        .music-button {
+            position: absolute;
+            top: 23%;
+            right: 35%;
+            width: 58px;
+            height: 238px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/72263a3854725b50.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+            transform-origin: top right; /* 设置旋转中心为右上角 */
+            transition: transform 0.5s ease; /* 过渡效果 */
+        }
+        .choice-button {
+            position: absolute;
+            top: 50%;
+            right: 66%;
+            width: 56px;
+            height:97px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/e0cd06598c316904.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+        }
+        /* 按钮旋转 */
+    .rotated-button {
+        transform: rotate(30deg);
+    }
+    /* 图片旋转 */
+    .rotated-loop {
+        animation: spin 2s linear infinite; /* 无限旋转 */
+    }
+
+    /* 动画定义 */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
     </style>
 </head>
 <body>
     <!-- 放大动画的图片 -->
-    <div class="intro-image"></div>
+    <div class="intro-image" id="introImage"></div>
     <!-- 背景区域 -->
     <div class="background">
+        <div class="stars"></div>
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
         <!-- 右上角图片与按钮 -->
         <div class="top-right"></div>
         <button class="top-right-button" onclick="Login()"></button>
+        <!-- 音乐播放器 -->
+        <div class="music-bottom"></div>
+        <div class="music-loop" id="musicLoop"></div>
+        <button class="music-button" id="musicButton"></button>
+        <button class="choice-button" onclick="ChoiceMusic()"></button>
          <!-- 音乐文件 -->
+         <audio id="introMusic">
+            <source src="转场音效.mp3" type="audio/mpeg"> <!-- 替换为入场音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
         <audio id="backgroundMusic" loop autoplay>
             <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
             您的浏览器不支持 HTML5 音频。
         </audio>
     </div>
     <script>
-        // 获取音频和按钮元素
-        const music = document.getElementById('backgroundMusic');
-        const musicButton = document.querySelector('.music-toggle-button');
+        // 获取音频元素
+        const introMusic = document.getElementById('introMusic');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+    
+        // 默认先播放入场音乐
+        introMusic.play();
+    
+        // 当入场音乐播放完毕时，切换到背景音乐
+        introMusic.addEventListener('ended', () => {
+            backgroundMusic.play();
+        });
+        // 获取动画图片元素
+        const introImage = document.getElementById('introImage');
 
-        // 默认开启音乐
+        // 监听动画结束事件
+        introImage.addEventListener('animationend', () => {
+            // 动画结束后，隐藏图片
+            introImage.classList.add('hidden');
+        });
+        // 音乐开关控制逻辑
+        const musicBegin = document.querySelector('.music-toggle-button');
         let isMusicPlaying = true;
-
-        // 切换音乐开关
+    
         function toggleMusic() {
             if (isMusicPlaying) {
-                music.pause(); // 暂停音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
+                introMusic.pause();
+                backgroundMusic.pause();
+                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
             } else {
-                music.play(); // 播放音乐
-                musicButton.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
+                // 判断当前是否在播放入场音乐
+                if (!introMusic.ended) {
+                    introMusic.play(); // 继续播放入场音乐
+                } else {
+                    backgroundMusic.play(); // 播放背景音乐
+                }
+                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
             }
-            isMusicPlaying = !isMusicPlaying; // 切换状态
+            isMusicPlaying = !isMusicPlaying;
         }
+        // 获取元素
+        const musicButton = document.getElementById('musicButton');
+        const musicLoop = document.getElementById('musicLoop');
+
+        // 初始化状态
+        let isRotating = false;
+
+        // 添加点击事件监听器
+        musicButton.addEventListener('click', () => {
+            if (!isRotating) {
+                // 添加旋转样式
+                musicButton.classList.add('rotated-button');
+                musicLoop.classList.add('rotated-loop');
+            } else {
+                // 移除旋转样式
+                musicButton.classList.remove('rotated-button');
+                musicLoop.classList.remove('rotated-loop');
+            }
+            // 切换状态
+            isRotating = !isRotating;
+        });
     </script>
 </body>
 </html>
