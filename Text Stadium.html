@@ -104,18 +104,42 @@
         .top-right-button:hover {
             background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
         }
+        /* 返回按钮 */
+        .return-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/07ab111e6ddb50c0.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent;
+            z-index: 3;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 背景区域 -->
-    <div class="background">
+        <!-- 放大动画的图片 -->
+        <div class="intro-image" id="introImage"></div>
+        <!-- 背景区域 -->
+        <div class="background">
+        <div class="stars"></div>
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
         <!-- 右上角图片与按钮 -->
         <div class="top-right"></div>
         <button class="top-right-button" onclick="Login()"></button>
+        <!-- 右下角返回按钮 -->
+        <div class="return-button" onclick="window.location.href='homepage.html'"></div>
          <!-- 音乐文件 -->
+         <audio id="introMusic">
+            <source src="转场音效.mp3" type="audio/mpeg"> <!-- 替换为入场音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
         <audio id="backgroundMusic" loop autoplay>
             <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
             您的浏览器不支持 HTML5 音频。
