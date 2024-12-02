@@ -110,12 +110,17 @@
 
     <!-- 背景区域 -->
     <div class="background">
+        <div class="stars"></div>
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
         <!-- 右上角图片与按钮 -->
         <div class="top-right"></div>
         <button class="top-right-button" onclick="Login()"></button>
          <!-- 音乐文件 -->
+         <audio id="introMusic">
+            <source src="转场音效.mp3" type="audio/mpeg"> <!-- 替换为入场音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
         <audio id="backgroundMusic" loop autoplay>
             <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
             您的浏览器不支持 HTML5 音频。
