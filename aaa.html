@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Slider Pages</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="music.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .background {
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/4c13057cf3e745ac.jpg');
+            background-size: cover; /* 背景完全覆盖，不会留白 */
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* 关键：设置为相对定位，供子元素定位 */
+            width: 100%; /* 小岛宽度 */
+        }
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            height: 300px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .options {
+            display: none;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .options.active {
+            display: flex;
+        }
+        .button1 {
+            position: absolute;
+            bottom: 22%;
+            left: 38%;
+            width: 120px;
+            height: 120px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/05/6e84524c5769229b.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+        }
+        .button2 {
+            position: absolute;
+            bottom: 22%;
+            left: 52%;
+            width: 120px;
+            height: 120px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/05/33e00c849b293588.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+        }
+        .back-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            width: 45px;
+            height: 30px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/24/fcd6b2c745678afe.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+        }
+    </style>
+</head>
+<body>
+<!-- Page 2 -->
+    <div id="background" class="background">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-index="1"><img src="https://s3.bmp.ovh/imgs/2024/12/24/785f73cf1438d628.png" alt="Option 1"></div>
+                <div class="swiper-slide" data-index="2"><img src="https://s3.bmp.ovh/imgs/2024/12/24/eda1e88c915cc176.png" alt="Option 2"></div>
+                <div class="swiper-slide" data-index="3"><img src="https://s3.bmp.ovh/imgs/2024/12/24/c95468301e3e76e3.png" alt="Option 3"></div>
+                <div class="swiper-slide" data-index="4"><img src="https://s3.bmp.ovh/imgs/2024/12/24/ed41e26bca303b3d.png" alt="Option 4"></div>                
+            </div>
+        </div>
+        <div class="options" id="imageOptions">
+            <button class="button1" id="button1" onclick="window.location.href='choice page.html'"></button>
+            <button class="button2" id="button2"></button>
+        </div>
+        <!-- 音乐开关按钮 -->
+        <button class="music-toggle-button" onclick="toggleMusic()"></button>
+        <!-- 右下角返回按钮 -->
+        <div class="back-button" onclick="window.location.href='Personal Island.html'"></div>
+         <!-- 音乐文件 -->
+         <audio id="introMusic">
+            <source src="转场音效.mp3" type="audio/mpeg"> <!-- 替换为入场音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
+        <audio id="backgroundMusic" loop autoplay>
+            <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
+            您的浏览器不支持 HTML5 音频。
+        </audio>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- 插入HTML的容器 -->
+    <div id="container"></div>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="script.js"></script>
+    <script src="music.js"></script>
+    <script>
+        const button2 = document.getElementById('button2');
+        const imageGrid = document.getElementById('imageGrid');
+        const imageOptions = document.getElementById('imageOptions');
+
+        let selectedImage = null;
+        button2.addEventListener('click', () => alert('No video or image!'));
+
+
+        // Swiper initialization
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 30,
+        });
+
+        // Handle option selection
+        document.querySelectorAll('.swiper-slide').forEach(slide => {
+            slide.addEventListener('click', () => {
+                document.querySelectorAll('.swiper-slide').forEach(s => s.style.transform = 'translateY(0)');
+                slide.style.transform = 'translateY(-100px)';
+                imageOptions.classList.add('active');
+                selectedImage = slide.textContent;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="music.css">
     <style>
         /* 整体页面布局 */
         body, html {
@@ -26,22 +28,6 @@
             align-items: center;
             position: relative; /* 关键：设置为相对定位，供子元素定位 */
             width: 100%; /* 小岛宽度 */
-        }
-
-        /* 音乐开关按钮样式 */
-        .music-toggle-button {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 40px;
-            height: 40px;
-            background-image: url('https://t.tutu.to/img/RZPJr'); /* 替换为音乐开启按钮图片 */
-            background-size: contain;
-            background-repeat: no-repeat;
-            border: none;
-            cursor: pointer;
-            background-color: transparent;
-            z-index: 3;
         }
 
 /* 其他动画 */
@@ -294,42 +280,9 @@
     z-index: 0; /* 最上层 */
     aspect-ratio:1920/407; /* 设置宽高比，例如 4:1 */
 }
-/* 右上角图片与按钮 */
-.top-right {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 254px;
-            height: 104px;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/8ccf3c7dba9a53a8.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 4; /* 增加按钮的层级 */
-        }
-
-.top-right-button {
-            position: absolute;
-            top: 138px;
-            right: 30px;
-            width: 103px;
-            height: 40px;
-            background-image: url('https://t.tutu.to/img/RZqG4'); /* 替换为按钮图片路径 */
-            background-size: contain;
-            background-repeat: no-repeat;
-            border: none;
-            cursor: pointer;
-            background-color: transparent; /* 确保背景色透明 */
-            outline: none; /* 去掉按钮的聚焦边框 */
-            z-index: 4; /* 增加按钮的层级 */
-        }
-        /* 按钮悬停效果 */
-        .top-right-button:hover {
-            background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
-        }
     </style>
 </head>
 <body>
-
     <!-- 背景区域 -->
     <div class="background">
         <!-- 云层 -->
@@ -360,15 +313,16 @@
     </div> 
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
-        <!-- 右上角图片与按钮 -->
-        <div class="top-right"></div>
-        <button class="top-right-button" onclick="Login()"></button>
          <!-- 音乐文件 -->
         <audio id="backgroundMusic" loop autoplay>
             <source src="背景音乐.mp3" type="audio/mpeg"> <!-- 替换为您的音乐文件路径 -->
             您的浏览器不支持 HTML5 音频。
         </audio>
     </div>
+    <!-- 插入HTML的容器 -->
+    <div id="container"></div>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="script.js"></script>
     <script>
         // 获取音频和按钮元素
         const music = document.getElementById('backgroundMusic');

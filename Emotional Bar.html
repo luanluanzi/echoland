@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="music.css">
+    <link rel="stylesheet" href="return.css">
     <style>
         /* 整体页面布局 */
         body, html {
@@ -57,67 +60,198 @@
             position: relative; /* 关键：设置为相对定位，供子元素定位 */
             width: 100%; /* 小岛宽度 */
         }
+        /* 摇晃酒杯交互 */
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        /* 音乐开关按钮样式 */
-        .music-toggle-button {
+        .emotion {
             position: absolute;
-            top: 30px;
-            left: 30px;
-            width: 40px;
-            height: 40px;
-            background-image: url('https://t.tutu.to/img/RZPJr'); /* 替换为音乐开启按钮图片 */
-            background-size: contain;
-            background-repeat: no-repeat;
-            border: none;
-            cursor: pointer;
-            background-color: transparent;
-            z-index: 3;
-        }
-        /* 右上角图片与按钮 */
-        .top-right {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 254px;
-            height: 104px;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/12/01/8ccf3c7dba9a53a8.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 4; /* 增加按钮的层级 */
-        }
-        .top-right-button {
-            position: absolute;
-            top: 138px;
-            right: 30px;
-            width: 103px;
-            height: 40px;
-            background-image: url('https://t.tutu.to/img/RZqG4'); /* 替换为按钮图片路径 */
+            top: 30%;
+            right: 40%;
+            width: 353px;
+            height: 453px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/04/02e51f126849a977.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
             border: none;
             cursor: pointer;
             background-color: transparent; /* 确保背景色透明 */
             outline: none; /* 去掉按钮的聚焦边框 */
-            z-index: 4; /* 增加按钮的层级 */
         }
-        /* 按钮悬停效果 */
-        .top-right-button:hover {
-            background-image: url('https://t.tutu.to/img/RZ05P'); /* 替换为按钮悬停时的图片路径 */
+
+        .emotion.shaking {
+            animation: shake 3s infinite; /* 更慢的摇晃动画 */
         }
-        /* 返回按钮 */
-        .return-button {
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+
+        .text {
             position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/07ab111e6ddb50c0.png');
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap; /* 禁止自动换行 */
+            opacity: 0;
+            transform: scale(0.8);
+            animation: typewriter 6s forwards, floatUp 10s 6s forwards; /* 更慢的文字动画 */
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+                opacity: 1;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: scale(1.2) translateY(-100px);
+            }
+        }
+        /* 应用提示 */
+        .play {
+            position: absolute;
+            top: 63%;
+            right: 35%;
+            width: 91px;
+            height: 36px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/97300807ec7d433e.png'); /* 替换为你的星星图片 */
+            background-position: center;
+            background-size: contain;
+        }
+        .switch {
+            position: absolute;
+            top: 10%;
+            left: 6%;
+            width: 154px;
+            height: 36px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/04/a7d8b51254a0f6ca.png'); /* 替换为你的星星图片 */
+            background-position: center;
+            background-size: contain;
+        }
+    /*选择框*/
+    .choice-button {
+            position: absolute;
+            top: -7%;
+            left: 17%;
+            width: 167px;
+            height:164px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/04/32c2bf1ecd189637.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
             border: none;
             cursor: pointer;
-            background-color: transparent;
-            z-index: 3;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+        }
+    .overlay {
+            transform: scale(0.8);  /* 将整个模块缩小到70% */
+            position: fixed;
+            top: 15%;
+            left: 9%;
+            width: 400px;
+            height: 440px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+
+        .overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal {
+            position: relative;
+            width: 310px;
+            height: 438px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: url('https://s3.bmp.ovh/imgs/2024/12/18/6bdce2036ad1b761.png') no-repeat center center/cover;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 63px;
+            padding-top: 33px;
+        }
+
+        .modal-header .search-box {
+            flex: 1;
+            color: #fff;
+        }
+
+        .modal-header .search-box input {
+            width: 85%;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+        }
+
+        .modal-header .close-button {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: url('https://s3.bmp.ovh/imgs/2024/12/18/2699642ea85b76b4.png') no-repeat center center/contain;
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            flex: 0.96;
+            margin-right: 20px;
+            margin-top: 10px;
+            overflow-y: scroll;   /* 保证竖向滚动条出现 */
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 40px;
+            padding-right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto; /* 保持图片比例 */
+            cursor: pointer;
+        }
+        .modal-content-text {
+            color: rgb(255, 248, 228);                      /* 文字颜色为白色 */
+            font-size: 18px;                   /* 设置文字大小 */
+        }
+        .modal-content img:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -126,14 +260,34 @@
     <div class="intro-image" id="introImage"></div>
     <!-- 背景区域 -->
     <div class="background">
-        <div class="stars"></div>
+        <div class="play"></div>
+        <div class="switch"></div>
         <!-- 音乐开关按钮 -->
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
-        <!-- 右上角图片与按钮 -->
-        <div class="top-right"></div>
-        <button class="top-right-button" onclick="Login()"></button>
         <!-- 右下角返回按钮 -->
         <div class="return-button" onclick="window.location.href='homepage.html'"></div>
+        <!-- 酒杯 -->
+        <div class="container">
+            <button class="emotion" id="glass"></button>
+        </div>
+        <!-- 选择按钮 -->
+        <button class="choice-button" onclick="ChoiceMusic()"></button>
+        <!-- 选择框 -->
+        <div class="overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search..."">
+                    </div>
+                    <button class="close-button" id="closeModal"></button>
+                </div>
+                <div class="modal-content">
+                    <img src="https://s3.bmp.ovh/imgs/2024/12/23/998fd7f9552f0b49.png" alt="Image 1">
+                    <img src="https://s3.bmp.ovh/imgs/2024/12/23/1387d0a414201d47.png" alt="Image 2">
+                    <img src="https://s3.bmp.ovh/imgs/2024/12/23/d99d9f86dedc7c34.png" alt="Image 3">
+                    <p class="modal-content-text">currently no more...</p>
+                </div>
+            </div>
          <!-- 音乐文件 -->
          <audio id="introMusic">
             <source src="转场音效.mp3" type="audio/mpeg"> <!-- 替换为入场音乐文件路径 -->
@@ -144,45 +298,71 @@
             您的浏览器不支持 HTML5 音频。
         </audio>
     </div>
+            <!-- 插入HTML的容器 -->
+            <div id="container"></div>
+            <!-- 引入 JavaScript 文件 -->
+            <script src="script.js"></script>
+            <script src="music.js"></script>
+            <script src="overlay.js"></script>
     <script>
-        // 获取音频元素
-        const introMusic = document.getElementById('introMusic');
-        const backgroundMusic = document.getElementById('backgroundMusic');
-    
-        // 默认先播放入场音乐
-        introMusic.play();
-    
-        // 当入场音乐播放完毕时，切换到背景音乐
-        introMusic.addEventListener('ended', () => {
-            backgroundMusic.play();
-        });
-        // 获取动画图片元素
-        const introImage = document.getElementById('introImage');
+        // 获取按钮和play元素
+        const playButton = document.querySelector('.emotion');
+        const playElement = document.querySelector('.play');
 
-        // 监听动画结束事件
-        introImage.addEventListener('animationend', () => {
-            // 动画结束后，隐藏图片
-            introImage.classList.add('hidden');
-        });
-        // 音乐开关控制逻辑
-        const musicBegin = document.querySelector('.music-toggle-button');
-        let isMusicPlaying = true;
-    
-        function toggleMusic() {
-            if (isMusicPlaying) {
-                introMusic.pause();
-                backgroundMusic.pause();
-                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZCb6")'; // 音乐关闭图标
-            } else {
-                // 判断当前是否在播放入场音乐
-                if (!introMusic.ended) {
-                    introMusic.play(); // 继续播放入场音乐
-                } else {
-                    backgroundMusic.play(); // 播放背景音乐
-                }
-                musicBegin.style.backgroundImage = 'url("https://t.tutu.to/img/RZPJr")'; // 音乐开启图标
+        // 添加点击事件监听器
+        playButton.addEventListener('click', () => {
+            playElement.style.display = 'none'; // 点击后隐藏play元素
+            });
+
+        // 摇晃酒杯动画定义
+            const glass = document.getElementById('glass');
+        let isShaking = false;
+        const messages = [
+            { text: 'Do not control the soul‘s desire for freedom', music: 'music1.mp3' },
+            { text: 'Brave people enjoy the world first', music: 'music2.mp3' },
+            { text: 'Music is just a form, gathering is the purpose', music: 'music3.mp3' },
+            { text: 'The world may not get better, but you will', music: 'music4.mp3' },
+            { text: 'The best people are destined to be by your side', music: 'music5.mp3' }
+        ];
+
+        glass.addEventListener('click', () => {
+            if (!isShaking) {
+                isShaking = true;
+                glass.classList.add('shaking');
+                const message = messages[Math.floor(Math.random() * messages.length)];
+                createText(message.text);
+                playMusic(message.music);
+
+                setTimeout(() => {
+                    glass.classList.remove('shaking');
+                    isShaking = false;
+                }, 6000); // 动画时间与文字动画一致
             }
-            isMusicPlaying = !isMusicPlaying;
+        });
+
+        function createText(content) {
+            const text = document.createElement('div');
+            text.className = 'text';
+            text.innerText = content;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetX = (Math.random() - 0.5) * 50; // 控制冒出范围更小
+            const offsetY = (Math.random() - 0.5) * 50;
+
+            text.style.left = `${centerX + offsetX}px`;
+            text.style.top = `${centerY + offsetY}px`;
+            document.body.appendChild(text);
+
+            setTimeout(() => {
+                text.remove();
+            }, 16000); // 文字存在时间
+        }
+
+        function playMusic(src) {
+            const audio = new Audio(src);
+            audio.play();
         }
     </script>
 </body>

@@ -14,37 +14,6 @@
             height: 100%;
             overflow: hidden;
         }
-        /* 放大动画的图片样式 */
-        .intro-image {
-            position: fixed; /* 固定在视口上 */
-            top: 0;
-            left: 0;
-            width: 100vw; /* 宽度和高度铺满整个屏幕 */
-            height: 100vh;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/64a2f3b9b8a290f5.jpg'); /* 替换为图片1路径 */
-            background-size: cover; /* 让背景图覆盖整个区域 */
-            background-position: center;
-            animation: zoomInOut 2s ease-out forwards; /* 应用放大和消失动画 */
-            z-index: 99; /* 确保图片在最上面 */
-        }
-        @keyframes zoomInOut {
-            0% {
-            transform: scale(1); /* 初始大小 */
-            opacity: 1; /* 保持完全不透明 */
-            }
-        66% {
-            transform: scale(1.2); /* 放大到1.2倍 */
-            opacity: 1; /* 在前3秒不变 */
-            }
-        100% {
-            transform: scale(2); /* 放大到1.5倍 */
-            opacity: 0; /* 最后1秒内逐渐消失 */
-            }
-        }
-        /* 动画结束后彻底隐藏 */
-        .hidden {
-            display: none;
-            }
         /* 背景图片 */
         .background {
             background-image: url('https://s3.bmp.ovh/imgs/2024/12/02/4c13057cf3e745ac.jpg');
@@ -78,8 +47,8 @@
         /* 添加经历 */
         .add {
             position: absolute;
-            bottom: 18%;
-            left: 20%;
+            bottom: 35%;
+            left: 45%;
             width: 60px;
             height: 60px;
             background-image: url('https://s3.bmp.ovh/imgs/2024/12/05/65c368c11d25f68c.png'); /* 替换为按钮图片路径 */
@@ -97,17 +66,31 @@
             right: 0%;
             width:1220px;
             height: 450px;
-            background-image: url('https://s3.bmp.ovh/imgs/2024/12/24/f3d120a493b40889.png'); /* 替换为按钮图片路径 */
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/24/97cf60f1a8653527.png'); /* 替换为按钮图片路径 */
             background-size: contain;
             background-repeat: no-repeat;
             border: none;
             cursor: pointer;
         }
+        /* 新的经历 */
+        .video {
+            position: absolute;
+            bottom: 11%;
+            left: 12%;
+            width: 118px;
+            height: 150px;
+            background-image: url('https://s3.bmp.ovh/imgs/2024/12/08/a625387636e9d288.png'); /* 替换为按钮图片路径 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            background-color: transparent; /* 确保背景色透明 */
+            outline: none; /* 去掉按钮的聚焦边框 */
+            z-index: 4; /* 确保图片在最上面 */
+        }
     </style>
 </head>
 <body>
-    <!-- 放大动画的图片 -->
-    <div class="intro-image" id="introImage"></div>
     <!-- 添加 -->
     <div class="add" onclick="window.location.href='aaa.html'"></div>
     <!-- 背景区域 -->
@@ -116,6 +99,8 @@
         <button class="music-toggle-button" onclick="toggleMusic()"></button>
         <!-- 背景图 -->
         <div class="map"></div>
+        <!-- 经历 -->
+        <div class="video"></div>
         <!-- 右下角返回按钮 -->
         <div class="return-button" onclick="window.location.href='homepage.html'"></div>
         <!-- 暂未开发按钮 -->

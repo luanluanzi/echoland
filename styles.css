@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+    position: relative;
+}
+
+#profileImage {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 254px;
+    height: 104px;
+    cursor: pointer;
+    z-index: 4; /* 增加按钮的层级 */
+}
+
+#loginImage, #logoutImage {
+    position: absolute;
+    top: 138px;
+    right: 30px;
+    width: 103px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 4; /* 增加按钮的层级 */
+}
+
+#confirmImage {
+    position: absolute;
+    width: 134px;
+    height: 42px;
+    cursor: pointer;
+    margin-top: 70px;
+    z-index: 4; /* 增加按钮的层级 */
+}
+
+#loginConfirmButton {
+    position: absolute;
+    width: 134px;
+    height: 42px;
+    cursor: pointer;
+    margin-top: 200px;
+    z-index: 102;
+    z-index: 4; /* 增加按钮的层级 */
+}
+
+/* 悬停效果 */
+#confirmImage:hover {
+    content: url('https://s3.bmp.ovh/imgs/2024/12/05/df463881a69b46fa.png');
+}
+
+#loginConfirmButton:hover {
+    content: url('https://s3.bmp.ovh/imgs/2024/12/05/df463881a69b46fa.png');
+}
+
+#loginImage:hover {
+    content: url('https://s3.bmp.ovh/imgs/2024/12/08/e7cdd90a0153a78f.png');
+}
+
+#logoutImage:hover {
+    content: url('https://s3.bmp.ovh/imgs/2024/12/22/4b9dbf7b21ce99d2.jpg');
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#popupImage {
+    position: absolute;
+    width: 588px;
+    height: 328px;
+    cursor: pointer;
+    margin-top: -200px;
+}
+
+#loginBoxImage {
+    position: absolute;
+    width: 552px;
+    height: 407px;
+    cursor: pointer;
+    margin-top: -100px;
+}
+
+.inputs {
+    margin-top: 61px;
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 47px;
+}
+
+.inputs input {
+    width: 250px;
+    padding: 8px;
+    font-size: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0);
+    margin-left: 100px;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
